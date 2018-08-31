@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Authors>Borys Iermakov</Authors>
+    <Authors>Borys Iermakov; Maulik K</Authors>
     <AssemblyTitle>Serilog.Sinks.Fluentd</AssemblyTitle>
-    <PackageReleaseNotes>0.2.0</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Description>
       Serilog adapter for Fluentd
@@ -17,7 +17,7 @@
     <PackageIconUrl>http://serilog.net/images/serilog-sink-nuget.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/borisermakof/serilog-sinks-fluentd</RepositoryUrl>
     <PackageProjectUrl>https://serilog.net/</PackageProjectUrl>
-    <Version>0.2.3</Version>
+    <Version>1.0.0</Version>
   </PropertyGroup>
   
   <ItemGroup>
