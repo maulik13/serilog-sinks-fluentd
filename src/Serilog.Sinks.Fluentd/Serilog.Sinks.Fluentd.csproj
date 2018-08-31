@@ -17,6 +17,7 @@
     <PackageIconUrl>http://serilog.net/images/serilog-sink-nuget.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/borisermakof/serilog-sinks-fluentd</RepositoryUrl>
     <PackageProjectUrl>https://serilog.net/</PackageProjectUrl>
+    <Version>0.2.3</Version>
   </PropertyGroup>
   
   <ItemGroup>
