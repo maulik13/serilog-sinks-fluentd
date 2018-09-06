@@ -9,13 +9,21 @@ using System.Text;
 
 namespace Serilog.Sinks.Fluentd
 {
-    static class PropertyValueSimplifier
+    public static class PropertyValueSimplifier
     {
         // Code taken from: https://github.com/saleem-mirza/serilog-sinks-azure-analytics
         public static object Simplify(LogEventPropertyValue data)
         {
+
             if (data is ScalarValue value)
+            {
+                if (value.Value is DateTime dt)
+                {
+                    return dt.ToString("o");
+                }
                 return value.Value;
+            }
+                
 
             // ReSharper disable once SuspiciousTypeConversion.Global
             if (data is DictionaryValue dictValue)
