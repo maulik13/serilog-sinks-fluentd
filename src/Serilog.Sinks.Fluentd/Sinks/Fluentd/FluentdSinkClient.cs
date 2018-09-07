@@ -83,19 +83,27 @@ namespace Serilog.Sinks.Fluentd
             foreach (var log in logEvent.Properties)
             {
                 var logValue = PropertyValueSimplifier.Simplify(log.Value);
-                record.Add(log.Key, logValue);
+                record.Add(log.Key, logValue); 
             }
 
             if (logEvent.Exception != null)
             {
                 var exception = logEvent.Exception;
-                var errorFormatted = new Dictionary<string, object>
+                record.Add("Exception_Message", exception.Message);
+                record.Add("Exception_Source", exception.Source);
+                record.Add("Exception_Type", exception.GetType().ToString());
+                record.Add("Exception_StackTrace", exception.StackTrace);
+                record.Add("Exception_TargetSite", exception.TargetSite.ToString());
+
+                if (exception.InnerException != null)
                 {
-                    {"ExceptionMessage", exception.Message},
-                    {"ExceptionSource", exception.Source},
-                    {"ExceptionStackTrace", exception.StackTrace}
-                };
-                record.Add("Exception", errorFormatted);
+                    exception = exception.InnerException;
+                    record.Add("InnerException_Message", exception.Message);
+                    record.Add("InnerException_Source", exception.Source);
+                    record.Add("InnerException_Type", exception.GetType().ToString());
+                    record.Add("InnerException_StackTrace", exception.StackTrace);
+                    record.Add("InnerException_TargetSite", exception.TargetSite.ToString());
+                }
             }
 
             await EnsureConnectedAsync();
